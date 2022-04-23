@@ -24,7 +24,7 @@ class BasePage:
             element = WebDriverWait(self.driver, 20).until(ec.visibility_of_element_located(by_locator)).text
             #ele_text = element.text
             return element
-        except exception as es:
+        except BaseException as es:
             return es.args
 
 

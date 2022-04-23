@@ -1,7 +1,6 @@
+import pandas as pd
 import pytest
 import xlrd
-import openpyxl
-from openpyxl import load_workbook
 
 from Config.Config import TestData
 from Pages.SCAC_Code import ScacCode
@@ -9,24 +8,45 @@ from TestCases.test_BaseTest import BaseTest
 
 
 class Test_GetScacCompName(BaseTest):
-    def test_get_name(self):
+    def test_get_name1(self):
         self.getscac = ScacCode(self.driver)
-        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/carrier_codes.xlsx")
-        #self.getscac.click_input(TestData.SCAC_Code)
+        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_1.xlsx",
+                              "write_file1.xlsx")
 
-    def get_data_from_xl(self, file_loacation):
+    def test_get_name2(self):
+        self.getscac = ScacCode(self.driver)
+        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_2.xlsx",
+                              "write_file2.xlsx")
+
+    def test_get_name3(self):
+        self.getscac = ScacCode(self.driver)
+        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_3.xlsx",
+                              "write_file3.xlsx")
+
+    def test_get_name4(self):
+        self.getscac = ScacCode(self.driver)
+        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_4.xlsx",
+                              "write_file4.xlsx")
+
+    def get_data_from_xl(self, file_loacation, write_file_name):
         workbook = xlrd.open_workbook(file_loacation)
-        sheet = workbook.sheet_by_name("Carrier Code List")
+        sheet = workbook.sheet_by_name("Sheet1")
 
         """Get the row count"""
         row_count = sheet.nrows
         col_count = sheet.ncols
-
+        # excel_file = pd.read_excel(r"/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/write_carrier_codes.xlsx")
+        scac_comp_list = []
         for curr_row in range(1, row_count):
             scac = sheet.cell_value(curr_row, 0)
             company_name = self.getscac.click_input(scac)
-            print(company_name)
+            #scac_comp_list.append([scac, company_name])
+            # print(company_name)
+            self.write_excel_1(scac_comp_list, scac, company_name, write_file_name)
+        # df = pd.DataFrame(scac_comp_list, columns=['SCAC Code', 'Company Name'])
+        # df.to_excel('write_carrier_codes.xlsx')
 
-    # def write_data_into_xl(self,file_location):
-    #     wrkb = load_workbook("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/write_carrier_codes.xlsx")
-    #
+    def write_excel_1(self, scac_comp_list, scac, comp_name, file_name):
+        scac_comp_list.append([scac, comp_name])
+        df = pd.DataFrame(scac_comp_list, columns=['SCAC Code', 'Company Name'])
+        df.to_excel(file_name)
