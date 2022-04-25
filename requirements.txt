@@ -15,13 +15,13 @@ outcome==1.1.0
 packaging== 21.3
 pandas==1.4.2
 pip==22.0.4
-pluggy===1.0.0
-py====1.11.0
+pluggy==1.0.0
+py==1.11.0
 pycparser== 2.21
 pyOpenSSL== 22.0.0
 pyparsing==3.0.8
 PySocks==1.7.1
-pytest===7.1.1
+pytest==7.1.1
 pytest-forked==1.4.0
 pytest-xdist==2.5.0
 python-dateutil==2.8.2
