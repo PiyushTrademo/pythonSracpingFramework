@@ -37,7 +37,7 @@ class Test_GetScacCompName(BaseTest):
         col_count = sheet.ncols
         # excel_file = pd.read_excel(r"/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/write_carrier_codes.xlsx")
         scac_comp_list = []
-        for curr_row in range(1, row_count):
+        for curr_row in range(1, 10):
             scac = sheet.cell_value(curr_row, 0)
             company_name = self.getscac.click_input(scac)
             #scac_comp_list.append([scac, company_name])

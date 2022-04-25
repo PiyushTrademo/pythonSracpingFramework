@@ -36,5 +36,6 @@ class BasePage:
         try:
             split_strg = strg.split(': ', 4)
             return split_strg[2]
+
         except BaseException as es:
             return es.args
