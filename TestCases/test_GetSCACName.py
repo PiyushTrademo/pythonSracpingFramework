@@ -10,23 +10,23 @@ from TestCases.test_BaseTest import BaseTest
 class Test_GetScacCompName(BaseTest):
     def test_get_name1(self):
         self.getscac = ScacCode(self.driver)
-        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_1.xlsx",
-                              "write_file1.xlsx")
+        self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_11.xlsx",
+                              "write_file11.xlsx")
 
     def test_get_name2(self):
         self.getscac = ScacCode(self.driver)
         self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_2.xlsx",
-                              "write_file2.xlsx")
+                              "write_file22.xlsx")
 
     def test_get_name3(self):
         self.getscac = ScacCode(self.driver)
         self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_3.xlsx",
-                              "write_file3.xlsx")
+                              "write_file33.xlsx")
 
     def test_get_name4(self):
         self.getscac = ScacCode(self.driver)
         self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_4.xlsx",
-                              "write_file4.xlsx")
+                              "write_file44.xlsx")
 
     def get_data_from_xl(self, file_loacation, write_file_name):
         workbook = xlrd.open_workbook(file_loacation)
