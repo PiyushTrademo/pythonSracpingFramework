@@ -6,8 +6,11 @@ from Config.Config import TestData
 from Pages.SCAC_Code import ScacCode
 from TestCases.test_BaseTest import BaseTest
 
+"""File to scrap the SCAC data"""
+
 
 class Test_GetScacCompName(BaseTest):
+
     def test_get_name1(self):
         self.getscac = ScacCode(self.driver)
         self.get_data_from_xl("/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/scac_codes_11.xlsx",
@@ -35,18 +38,14 @@ class Test_GetScacCompName(BaseTest):
         """Get the row count"""
         row_count = sheet.nrows
         col_count = sheet.ncols
-        # excel_file = pd.read_excel(r"/Users/nikitasaxena/PycharmProjects/POM_Modle/TestCases/XlData/write_carrier_codes.xlsx")
         scac_comp_list = []
-        for curr_row in range(1, 10):
+        for curr_row in range(1, 3):
             scac = sheet.cell_value(curr_row, 0)
             company_name = self.getscac.click_input(scac)
-            #scac_comp_list.append([scac, company_name])
-            # print(company_name)
             self.write_excel_1(scac_comp_list, scac, company_name, write_file_name)
-        # df = pd.DataFrame(scac_comp_list, columns=['SCAC Code', 'Company Name'])
-        # df.to_excel('write_carrier_codes.xlsx')
 
-    def write_excel_1(self, scac_comp_list, scac, comp_name, file_name):
+    def write_excel_1(self, scac_comp_list, scac, comp_name, file_name, count=None):
         scac_comp_list.append([scac, comp_name])
         df = pd.DataFrame(scac_comp_list, columns=['SCAC Code', 'Company Name'])
         df.to_excel(file_name)
+

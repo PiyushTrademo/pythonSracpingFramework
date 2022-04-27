@@ -25,11 +25,11 @@ def init_driver(request):
     opt.add_argument('--ignore-certificate-errors')
     opt.add_argument("--incognito")
     if request.param == "chrome":
-        web_driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=opt)
+        web_driver = webdriver.Chrome(ChromeDriverManager().install(), options=opt)
         web_driver.get(TestData.Base_Url)
     if request.param == "firefox":
         web_driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-        web_driver.get(TestData.Base_Url)
+
     request.cls.driver = web_driver
     web_driver.implicitly_wait(10)
     yield
