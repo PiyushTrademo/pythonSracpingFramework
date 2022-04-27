@@ -4,7 +4,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-"""This will all the utility functions"""
+"""This will all the utility functions
+All the reusable methods will be defined in this File """
 
 
 class BasePage:
