@@ -39,12 +39,12 @@ class Test_GetScacCompName(BaseTest):
         row_count = sheet.nrows
         col_count = sheet.ncols
         scac_comp_list = []
-        for curr_row in range(1, 3):
+        for curr_row in range(1, row_count):
             scac = sheet.cell_value(curr_row, 0)
             company_name = self.getscac.click_input(scac)
             self.write_excel_1(scac_comp_list, scac, company_name, write_file_name)
 
-    def write_excel_1(self, scac_comp_list, scac, comp_name, file_name, count=None):
+    def write_excel_1(self, scac_comp_list, scac, comp_name, file_name):
         scac_comp_list.append([scac, comp_name])
         df = pd.DataFrame(scac_comp_list, columns=['SCAC Code', 'Company Name'])
         df.to_excel(file_name)
