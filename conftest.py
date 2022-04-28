@@ -26,7 +26,7 @@ def init_driver(request):
     opt.add_argument("--incognito")
     if request.param == "chrome":
         web_driver = webdriver.Chrome(ChromeDriverManager().install(), options=opt)
-        web_driver.get(TestData.Base_Url)
+
     if request.param == "firefox":
         web_driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
